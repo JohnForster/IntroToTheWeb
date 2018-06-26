@@ -13,8 +13,13 @@ get '/route2' do
   'The time now is: ' + Time.now.to_s
 end
 
-get '/cat' do
-  "<div style='border: dashed red'>
-  <img src ='http://f.cl.ly/items/0k0v3e2X3l2f3i1n1Y19/Screen%20Shot%202013-09-10%20at%2011.32.00.png'</img>
-  </div>"
+get '/named-cat' do
+  p params
+  @name = params[:name]
+  erb(:index)
+end
+
+get '/random-cat' do
+  @name = %w[Amigo Oscar Viking].sample
+  erb(:index)
 end
